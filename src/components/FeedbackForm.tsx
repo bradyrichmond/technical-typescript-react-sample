@@ -1,21 +1,35 @@
-import styled from "@emotion/styled"
-
+import styled from "@emotion/styled";
+import RatingScale from "./RatingScale";
 
 const FeedbackForm = () => {
+  const submitFeedback = (value: string) => {
+    alert(`Feedback value ${value} received!`);
+  }
+
+  const cancelFeedback = () => {
+
+  }
+
   return (
     <FormContainer>
       <img src="./logo_glyph.png" alt="logo" />
 
       <span
         style={{
-          width: "400px",
+          
           textAlign: "center",
           marginTop: "60px",
           fontSize: "24px",
           fontWeight: 600,
         }}
       >
-        Add your code here!
+        <TitleTypography>
+          We love to hear your feedback!
+        </TitleTypography>
+        <SubTitleTypography>
+          On a scale of 1-5, how likely are you to recommend this service?
+        </SubTitleTypography>
+        <RatingScale lowLabel='Not Likely' highLabel='Very Likely' topOfScale={5} onSubmit={submitFeedback} submitLabel='Submit' onCancel={cancelFeedback} cancelLabel='Skip' />
       </span>
     </FormContainer>
   )
@@ -35,3 +49,16 @@ const FormContainer = styled("div")({
   justifyContent: "flex-start",
 })
 
+const TitleTypography = styled("div")({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+})
+
+const SubTitleTypography = styled("div")({
+  display: 'flex',
+  marginTop: '1rem',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  fontWeight: 'normal'
+})
